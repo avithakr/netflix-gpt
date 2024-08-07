@@ -2,6 +2,10 @@
 
 - Create app using vite
 - Configured TailwindCSS
+- Configured react router
+- Header
+- Login Form
+- Sign Up Form
 
 # Features
 
