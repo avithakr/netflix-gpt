@@ -35,11 +35,11 @@ const Header = () => {
   }, [dispatch, navigate]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 text-white p-4">
+    <div className="fixed top-0 left-0 right-0 z-50 text-white px-2 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800 opacity-75">
       <div className="flex justify-between items-center">
         <img className="w-44" src={LOGO} alt="netflix logo" />
         {userInfo && (
-          <div className="flex text-gray-700 items-center">
+          <div className="flex items-center">
             <div className="w-10 border-2">
               <img
                 src={
@@ -51,7 +51,7 @@ const Header = () => {
                 className="w-10"
               />
             </div>
-            <button className="px-2 ml-2" onClick={handleSignOut}>
+            <button className="px-2 ml-2 text-white" onClick={handleSignOut}>
               Sign Out
             </button>
           </div>

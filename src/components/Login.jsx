@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import Header from './Header';
 import { checkValidateData } from './../utils/validate';
 import {
   createUserWithEmailAndPassword,
@@ -10,6 +9,7 @@ import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/store';
 import { PHOTOURL } from '../utils/constants';
+import Header from './Header';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -37,7 +37,7 @@ const Login = () => {
 
     if (message) return;
 
-    // sign in/Sign up
+    // sign in /Sign up
 
     if (!isSignInForm) {
       // sign up logic
