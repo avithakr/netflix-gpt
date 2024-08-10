@@ -3,22 +3,21 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { addUser, removeUser } from '../utils/store';
+import {
+  addUser,
+  removeUser,
+  setLanguage,
+  toggleGptSearchView,
+} from '../utils/store';
 import { LOGO } from '../utils/constants';
 import ErrorPage from '../pages/ErrorPage';
+import { SUPPORTED_LANGUAGES } from './../utils/constants';
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userInfo = useSelector((store) => store.user);
-
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        return <ErrorPage error={error} />;
-      });
-  };
+  const { showGptSearch } = useSelector((store) => store.gpt);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -34,28 +33,64 @@ const Header = () => {
     return () => unsubscribe();
   }, [dispatch, navigate]);
 
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        return <ErrorPage error={error} />;
+      });
+  };
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleSelectChange = (e) => {
+    dispatch(setLanguage(e.target.value));
+  };
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 text-white px-2 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800 opacity-75">
+    <div className="absolute px-2 z-50 w-full text-white bg-black bg-opacity-50">
       <div className="flex justify-between items-center">
-        <img className="w-44" src={LOGO} alt="netflix logo" />
-        {userInfo && (
-          <div className="flex items-center">
-            <div className="w-10 border-2">
-              <img
-                src={
-                  userInfo.photoURL
-                    ? userInfo.photoURL
-                    : './public/userIcon.png'
-                }
-                alt="user-icon"
-                className="w-10"
-              />
+        <div>
+          <img className="w-44" src={LOGO} alt="netflix logo" />
+        </div>
+        <div>
+          {userInfo && (
+            <div className="flex items-center">
+              {showGptSearch && (
+                <select
+                  className="px-2 py-1 mr-2 rounded border bg-gray-700"
+                  onChange={handleSelectChange}
+                >
+                  {SUPPORTED_LANGUAGES.map(({ identifier, name }) => {
+                    return (
+                      <option key={identifier} value={identifier}>
+                        {name}
+                      </option>
+                    );
+                  })}
+                </select>
+              )}
+              <button
+                className="px-2 py-1 bg-purple-800 mr-2 rounded text-white w-28"
+                onClick={handleGptSearchClick}
+              >
+                {showGptSearch ? 'Homepage' : 'GPT Search'}
+              </button>
+              <div className="w-10 border-2">
+                <img
+                  src={'./public/userIcon.png'}
+                  alt="user-icon"
+                  className="w-10"
+                />
+              </div>
+              <button className="px-2 ml-2" onClick={handleSignOut}>
+                Sign Out
+              </button>
             </div>
-            <button className="px-2 ml-2 text-white" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

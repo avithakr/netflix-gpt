@@ -6,11 +6,15 @@ import {
   addTrailerVideo,
   addPopularMovies,
 } from './slices/movieSlice';
+import { gptReducer, toggleGptSearchView } from './slices/gptSlice';
+import { configReducer, setLanguage } from './slices/configSlice';
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     movies: movieReducer,
+    gpt: gptReducer,
+    config: configReducer,
   },
 });
 
@@ -21,4 +25,6 @@ export {
   addNowPlayingMovies,
   addTrailerVideo,
   addPopularMovies,
+  toggleGptSearchView,
+  setLanguage,
 };

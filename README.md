@@ -35,6 +35,11 @@
 - TMDB image CDN url
 - Made the browser page amazing
 - Create usePopularMovies custom hooks
+- GPT search feature
+- Gptvsearch page
+- Gpt search bar
+- Multi-language feature
+- 
 
 # Features
 
