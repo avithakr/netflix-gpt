@@ -29,6 +29,7 @@
 - Update store with tailer data video
 - embedded the video and make it autoplay and mute
 - Tailwind classes to make it awesome 
+- Build secondary component
 
 # Features
 

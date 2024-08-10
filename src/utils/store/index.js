@@ -4,6 +4,7 @@ import {
   movieReducer,
   addNowPlayingMovies,
   addTrailerVideo,
+  addPopularMovies,
 } from './slices/movieSlice';
 
 const store = configureStore({
@@ -13,4 +14,11 @@ const store = configureStore({
   },
 });
 
-export { store, addUser, removeUser, addNowPlayingMovies, addTrailerVideo };
+export {
+  store,
+  addUser,
+  removeUser,
+  addNowPlayingMovies,
+  addTrailerVideo,
+  addPopularMovies,
+};

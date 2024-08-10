@@ -1,15 +1,40 @@
 import propTypes from 'prop-types';
+import { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
 import { GoInfo } from 'react-icons/go';
 
 const VideoTitle = ({ originalTitle, overview }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const maxWords = 20;
+
+  // Function to get the truncated overview
+  const getTruncatedDescription = () => {
+    const words = overview.split(' ');
+    if (words.length <= maxWords || isExpanded) {
+      return overview;
+    }
+    return words.slice(0, maxWords).join(' ') + '...';
+  };
+
+  // Function to toggle the expanded state
+  const toggleIsExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div className="pt-[20%] px-20 relative bg-gradient-to-r from-black w-screen aspect-video bottom-0">
       <div>
         <h1 className="text-6xl font-bold mb-4 w-3/4 text-white">
           {originalTitle}
         </h1>
-        <p className="text-md py-6 w-1/4 text-white">{overview}</p>
+        <p className="text-md py-6 w-1/4 text-white">
+          {getTruncatedDescription()}{' '}
+          {overview.split(' ').length > maxWords && (
+            <button onClick={toggleIsExpanded} className="text-blue-500">
+              {isExpanded ? 'View Less' : 'View More'}
+            </button>
+          )}
+        </p>
       </div>
       <div className="flex mt-4 ">
         <div>
