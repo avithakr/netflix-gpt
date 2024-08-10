@@ -30,6 +30,11 @@
 - embedded the video and make it autoplay and mute
 - Tailwind classes to make it awesome 
 - Build secondary component
+- Movie List
+- Movie Card
+- TMDB image CDN url
+- Made the browser page amazing
+- Create usePopularMovies custom hooks
 
 # Features
 
