@@ -5,9 +5,13 @@ const MovieCard = ({ movie }) => {
   const { title, poster_path } = movie;
 
   return (
-    <div className="w-44 pr-4">
-      <img src={IMAGE_CDN_URL + poster_path} alt={title} />
-    </div>
+    <>
+      {poster_path && (
+        <div className="w-44 pr-4">
+          <img src={IMAGE_CDN_URL + poster_path} alt={title} />
+        </div>
+      )}
+    </>
   );
 };
 

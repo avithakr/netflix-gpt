@@ -51,11 +51,11 @@ const Header = () => {
 
   return (
     <div className="absolute px-2 z-50 w-full text-white bg-black bg-opacity-50">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
         <div>
           <img className="w-44" src={LOGO} alt="netflix logo" />
         </div>
-        <div>
+        <div className="sm:py-4">
           {userInfo && (
             <div className="flex items-center">
               {showGptSearch && (

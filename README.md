@@ -39,7 +39,15 @@
 - Gptvsearch page
 - Gpt search bar
 - Multi-language feature
-- 
+- Integration openai api
+- Gpt search api call
+- fetched movies suggestion from TMDB
+- created gptSlice added data
+- Reused movie list component to make movie suggestion container
+- memoization
+- Added .env file
+- Added .env file to gitignore
+- Made our site responsive
 
 # Features
 

@@ -11,8 +11,7 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZTdmYzhhODVlYmNmOTc1MjYxYTc3MzI3NTNlZWRmMiIsIm5iZiI6MTcyMzA0MTQxNy43MDY0NjksInN1YiI6IjYzMmFhZDEzYTNiNWU2MDA3ZGRmYmNhYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wt8qvwzD3C3mHgF014cntxAcqvqj3aFCn1TfzGbSxbg',
+    Authorization: 'Bearer ' + import.meta.env.VITE_API_TMDB_KEY,
   },
 };
 
@@ -26,3 +25,9 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: 'hindi', name: 'Hindi' },
   { identifier: 'spanish', name: 'Spanish' },
 ];
+
+export const OPENAI_GPT_KEY = import.meta.env.VITE_API_OPENAI_GPT_KEY;
+
+export function getMovieSearchUrl(movie) {
+  return `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1'`;
+}

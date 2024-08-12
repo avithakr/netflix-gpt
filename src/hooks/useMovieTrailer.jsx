@@ -1,10 +1,11 @@
 import { useCallback, useEffect } from 'react';
 import { API_OPTIONS } from '../utils/constants';
 import { addTrailerVideo } from '../utils/store';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useMovieTrailer = (movieId, setLoading) => {
   const dispatch = useDispatch();
+  const { trailerVideo } = useSelector((store) => store.movies);
 
   const getMovieVideos = useCallback(async () => {
     try {
@@ -31,8 +32,8 @@ const useMovieTrailer = (movieId, setLoading) => {
   }, [movieId, dispatch, setLoading]);
 
   useEffect(() => {
-    getMovieVideos();
-  }, [movieId, dispatch, getMovieVideos]);
+    !trailerVideo && getMovieVideos();
+  }, [movieId, dispatch, getMovieVideos, trailerVideo]);
 };
 
 export default useMovieTrailer;

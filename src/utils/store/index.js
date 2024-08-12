@@ -6,7 +6,11 @@ import {
   addTrailerVideo,
   addPopularMovies,
 } from './slices/movieSlice';
-import { gptReducer, toggleGptSearchView } from './slices/gptSlice';
+import {
+  gptReducer,
+  toggleGptSearchView,
+  addGptMovieResult,
+} from './slices/gptSlice';
 import { configReducer, setLanguage } from './slices/configSlice';
 
 const store = configureStore({
@@ -27,4 +31,5 @@ export {
   addPopularMovies,
   toggleGptSearchView,
   setLanguage,
+  addGptMovieResult,
 };

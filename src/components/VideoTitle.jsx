@@ -22,12 +22,12 @@ const VideoTitle = ({ originalTitle, overview }) => {
   };
 
   return (
-    <div className="pt-[20%] px-20 relative bg-gradient-to-r from-black w-screen aspect-video bottom-0">
+    <div className="pt-[30%] md:pt-[20%] px-20 relative bg-gradient-to-r from-black w-screen aspect-video bottom-0">
       <div>
-        <h1 className="text-6xl font-bold mb-4 w-3/4 text-white">
+        <h1 className="text-6xl font-bold mb-4 md:w-3/4 text-white">
           {originalTitle}
         </h1>
-        <p className="text-md py-6 w-1/4 text-white">
+        <p className="text-md py-6 md:w-1/4 text-white">
           {getTruncatedDescription()}{' '}
           {overview.split(' ').length > maxWords && (
             <button onClick={toggleIsExpanded} className="text-blue-500">

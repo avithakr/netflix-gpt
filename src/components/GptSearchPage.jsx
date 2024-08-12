@@ -3,13 +3,20 @@ import GptSearchBar from './GptSearchBar';
 
 const GptSearchPage = () => {
   return (
-    <div className="">
+    <>
       <div className="absolute -z-10">
-        <img src="./neflixloginbg.jpg" alt="background banner" />
+        <img
+          src="./neflixloginbg.jpg"
+          alt="background banner"
+          className="fixed object-cover h-screen md:w-screen"
+        />
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
-    </div>
+
+      <div className="">
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
+    </>
   );
 };
 
